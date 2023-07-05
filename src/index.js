@@ -24,6 +24,10 @@ app.get("/user", async (req, res) => {
   res.send(users);
 });
 
+app.get("/test", function (req, res) {
+  console.log("Version 1");
+});
+
 app.get("/create", async (req, res) => {
   return res.send(`
     <form method="POST" action="/user">
