@@ -47,6 +47,10 @@ app.post("/user", async (req, res) => {
   res.redirect("/user");
 });
 
+app.get("/a", function (req, res) {
+  res.send("a");
+});
+
 app.listen(process.env.PORT, () => {
   console.log(`Server running on port ${process.env.PORT}`);
 });
