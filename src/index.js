@@ -28,6 +28,10 @@ app.get("/test", function (req, res) {
   console.log("Version 1");
 });
 
+app.get("/", function (req, res) {
+  res.send("Hello World!");
+});
+
 app.get("/create", async (req, res) => {
   return res.send(`
     <form method="POST" action="/user">
