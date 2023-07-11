@@ -10,18 +10,19 @@ jobs:
   deploy:
     runs-on: ubuntu-lastest
     steps:
-      - uses: actions/checkout@v3
-
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v2
+      - name: Use Node.js 18
+        uses: actions/setup-node@v1
         with:
-            node-version: 18
-            cache: yarn
-
-      - name: Set up SSH
-        shell: bash
-        env:
-          PORT: 3333
-        run: |
-          npm install
-          npm run deploy:prod
-          
+          node-version: 18
+      - name: SSH Remote Commands
+        uses: appleboy/ssh-action@v0.1.2
+        with:
+          host: ${{secrets.VPS_HOST}}
+          username: ${{secrets.VPS_USERNAME}}
+          password:  ${{secrets.VPS_PASSWORD}}
+          script: |
+            cd /var/www/test1.thetestdom.online
+            git pull
+            npm install
+            pm2 reload ecosystem.config.js
