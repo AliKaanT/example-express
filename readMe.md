@@ -1,2 +1,2 @@
-Example express-mongo project for learn how to deploy
+Example express-mongo project for testing servers
 
